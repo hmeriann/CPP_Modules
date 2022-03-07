@@ -1,7 +1,10 @@
 #include <iostream>
 
 /*
-** Write function wich otputs inputed text uppercase
+** Write the function wich otputs the text given in
+** argument in uppercase.
+** If there is no arguments it should print out the
+** message: "* LOUD AND UNBEARABLE FEEDBACK NOISE *".
 */
 
 int main(int argc, char **argv)
@@ -27,3 +30,4 @@ int main(int argc, char **argv)
 	}
 	return 0;
 }
+
