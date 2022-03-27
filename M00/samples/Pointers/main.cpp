@@ -2,10 +2,10 @@
 
 int	main() {
 
-	Sample	instance;
-	Sample	*instancep = &instance;
+	Sample	instance; //allocated on the stack
+	Sample	*instancep = &instance; //pointer
 
-	int		Sample::*p = NULL;
+	int		Sample::*p = NULL;//pointer on member attribute of Sample class
 	void	(Sample::*f)( void ) const;
 
 	p = &Sample::foo;
