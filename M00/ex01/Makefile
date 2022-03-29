@@ -1,13 +1,14 @@
 NAME	=	phonebook
-SRC		=	phonebook.cpp
+SRC		=	main.cpp phonebook.cpp contact.cpp
+HEAD	=	phonebook.class.hpp contact.class.hpp
 OBJ		=	${SRC:.cpp=.o}
-CC		=	c++
+CC		=	c++ -std=c++98
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
 
 all:		${NAME}
 
-${NAME}:	${OBJ}
+${NAME}:	${OBJ} ${HEAD}
 			${CC} ${FLAGS} -o ${NAME} ${OBJ}
 
 clean:
@@ -17,10 +18,5 @@ fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean ${NAME}
-
-test:		$(NAME)
-			./megaphone "shhhhh... I think the students are asleep..."
-			./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
-			./megaphone
 
 .PHONY:		all clean fclean re test

@@ -23,6 +23,7 @@ used outside a class is public.
 Don’t forget to watch the intranet videos.
 Namespaces, classes, member functions, stdio streams,
 initialization lists, static, const, and some other basic stuff
+
 On program start-up, the phonebook is empty and the user is prompted to enter one
 of three commands. The program only accepts ADD, SEARCH and EXIT.
 
@@ -52,3 +53,4 @@ stops when the user inputs EXIT.
 Give a relevant name to your executable.
 http://www.cplusplus.com/reference/string/string/ and of course
 http://www.cplusplus.com/reference/iomanip/
+
