@@ -12,12 +12,12 @@ public:
 	PhoneBook();
 	~PhoneBook();
 
-	int		addNewContact(int ind, int cont_count);
+	// int		addNewContact(int ind, int cont_count);
 	// void	printCurrentContact();
 	// void	printAllContacts();
 	// void	searchContactByIndex(int ind);
 
-private:
+// private:
 	Contact	contacts[8];
 };
 
