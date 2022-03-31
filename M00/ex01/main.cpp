@@ -1,38 +1,38 @@
-#include "phonebook.class.hpp"
+#include "Phonebook.hpp"
 
 int main()
 {
-	// PhoneBook	book;
+	PhoneBook	book;
 	std::string	line;
 	int			ind;
-	int			contacts_count;
 
-	std::cout << "WELCOME TO THE PHONEBOOK!" << std::endl;
-	std::cout << "TYPE ONE OF AVAILABLE COMMANDS: ADD, SEARCH OR EXIT" << std::endl;
+	std::cout << CYAN << "TYPE ONE OF AVAILABLE COMMANDS: ADD, SEARCH OR EXIT" << RESET << std::endl;
 	std::getline(std::cin, line);
 	ind = 0;
-	contacts_count = 0;
 	while (line != "EXIT")
 	{
 		if (line == "ADD")
 		{
-			std::cout << "this is ADD" << std::endl;
-			// book.addNewContact(ind, contacts_count);
-			contacts_count++;
+			book.addNewContact(ind + 1);
+			book.contacts_count++;
 		}
 		else if (line == "SEARCH")
 		{
-			if (contacts_count == 0)
-				std::cout << "There is no contacts yet in this PhoneBook" << std::endl;
+			if (book.contacts_count == 0)
+				std::cout << RED << "There is no contacts yet in this PhoneBook" << RESET << std::endl;
 			else
-				std::cout << "this is SEARCH" << std::endl;
-				return 0;
-				// book.searchContactByIndex(ind);
+			{
+				book.printAllContacts();
+				book.searchContact();
+			}
 		}
+		else
+			std::cout << "Invalid command. Try one of ADD, SEARCH OR EXIT" << std::endl;
+		std::cout << CYAN << "TYPE ONE OF AVAILABLE COMMANDS: ADD, SEARCH OR EXIT" << RESET << std::endl;
 		std::getline(std::cin, line);
-		if (contacts_count == 8)
-			contacts_count = 0;
+		if (book.contacts_count == 8)
+			book.contacts_count = 0;
 	}
-	std::cout << "Bye-bye" << std::endl;
+	std::cout << YELLOW << "Bye-bye" << RESET << std::endl;
 	return 0;
 }
