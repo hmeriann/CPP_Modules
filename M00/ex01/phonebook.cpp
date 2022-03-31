@@ -27,7 +27,7 @@ void	PhoneBook::addNewContact(int i)
 
 void	PhoneBook::printCurrentContact(Contact current)
 {
-	std::cout << std::right << "|" << std::setw(10) << current.ind + 1 << "|";
+	std::cout << std::right << "|" << std::setw(10) << current.ind << "|";
 	if (current.firstName.length() < 10)
 		std::cout << std::right << std::setw(10) << current.firstName << "|";
 	else
@@ -51,9 +51,9 @@ void	PhoneBook::printAllContacts(void)
 	std::cout << std::string(45, '-') << std::endl;
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << std::string(45, '-') << std::endl;
-	while (contacts[i].ind >= 0 && contacts[i].ind < 9 && i < 9)
+	while (i < contacts_count || i < 9)
 	{
-		printCurrentContact(contacts[i]);
+		printCurrentContact(contacts[i + 1]);
 		i++;
 	}
 }
