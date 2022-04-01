@@ -26,7 +26,8 @@ int main()
 		else if (line == "SEARCH")
 		{
 			book.printAllContacts();
-			book.searchContact();
+			if (book.contacts_count != 0)
+				book.searchContact();
 		}
 		else
 			std::cout << "Invalid command. Try one of ADD, SEARCH OR EXIT" << std::endl;

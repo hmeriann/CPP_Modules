@@ -20,7 +20,6 @@ public:
 
 private:
 	Contact	contacts[8];
-
 };
 
 #define RESET	"\033[0m"

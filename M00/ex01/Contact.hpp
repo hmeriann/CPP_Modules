@@ -5,6 +5,7 @@
 #include <string>
 
 class Contact {
+
 public:
 	Contact();
 	~Contact();
@@ -24,14 +25,6 @@ public:
 	void		SetNickName(std::string nn);
 	void		SetPhoneNumber(std::string pn);
 	void		SetDarkestSecret(std::string ds);
-
-// /* member functions */
-// 	void		initContact(Contact *contact);
-// 	void		addFirstName(Contact *contact);
-// 	void		addLastName(Contact *contact);
-// 	void		addNickName(Contact *contact);
-// 	void		addPhoneNumber(Contact *contact);
-// 	void		addDarkestSecret(Contact *contact);
 
 private:
 	int			ind;

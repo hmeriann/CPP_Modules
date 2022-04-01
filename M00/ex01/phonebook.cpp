@@ -25,64 +25,107 @@ void	PhoneBook::addNewContact(int i)
 	for (int iter = 0; iter < 2; iter++)
 	{
 		std::cout << BOLDWHITE << "FIRST NAME: " << RESET;
-		std::getline(std::cin, tmp_str);
-		contacts[i].SetFirstName(tmp_str);
-		if (contacts[i].GetFirstName().length() == 0)
+		tmp_str.clear();
+		// std::getline(std::cin, tmp_str);
+		std::cin >> tmp_str;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (tmp_str.empty())
 		{
 			std::cout << "The field cannot be empty" << std::endl;
 			iter = 0;
 		}
+		else
+		{
+			contacts[i].SetFirstName(tmp_str);
+			break;
+		}
 	}
-	tmp_str.clear();
 
 	for (int iter = 0; iter < 2; iter++)
 	{
 		std::cout << BOLDWHITE << "LAST NAME: " << RESET;
-		std::getline(std::cin, tmp_str);
-		contacts[i].SetLastName(tmp_str);
-		if (contacts[i].GetLastName().length() == 0)
+		tmp_str.clear();
+		// std::getline(std::cin, tmp_str);
+		std::cin >> tmp_str;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (tmp_str.length() == 0)
 		{
 			std::cout << "The field cannot be empty" << std::endl;
 			iter = 0;
 		}
+		else
+		{
+			contacts[i].SetLastName(tmp_str);
+			break;
+		}
 	}
-	tmp_str.clear();
 
-	std::cout << BOLDWHITE << "NICKNAME: " << RESET;
-	std::getline(std::cin, tmp_str);
-	if (tmp_str.empty())
+	for (int iter = 0; iter < 2; iter++)
 	{
-		std::cout << "The field cannot be empty" << std::endl;
-		std::getline(std::cin, tmp_str);
+		std::cout << BOLDWHITE << "NICKNAME: " << RESET;
+		tmp_str.clear();
+		// std::getline(std::cin, tmp_str);
+		std::cin >> tmp_str;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (tmp_str.empty())
+		{
+			std::cout << "The field cannot be empty" << std::endl;
+			iter = 0;
+		}
+		else
+		{
+			contacts[i].SetNickName(tmp_str);
+			break;
+		}
 	}
-	contacts[i].SetNickName(tmp_str);
-	tmp_str.clear();
 	
-	std::cout << BOLDWHITE << "PHONE NUMBER: " << RESET;
-	std::getline(std::cin, tmp_str);
-	while (tmp_str.empty())
+	for (int iter = 0; iter < 2; iter++)
 	{
-		std::getline(std::cin, tmp_str);
-		std::cout << "The field cannot be empty" << std::endl;
+		std::cout << BOLDWHITE << "PHONE NUMBER: " << RESET;
+		tmp_str.clear();
+		// std::getline(std::cin, tmp_str);
+		std::cin >> tmp_str;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (tmp_str.empty())
+		{
+			std::cout << "The field cannot be empty" << std::endl;
+			iter = 0;
+		}
+		else if (tmp_str.find_first_not_of("1234567890") != std::string::npos)
+		{
+			std::cout << "Phone number must contain only numbers" << std::endl;
+			iter = 0;
+		}
+		else
+		{
+			contacts[i].SetPhoneNumber(tmp_str);
+			break;
+		}
 	}
-	if (tmp_str.find_first_not_of("1234567890") != std::string::npos)
-		std::cout << "Phone number must contain only numbers" << std::endl;
-	else
-		contacts[i].SetPhoneNumber(tmp_str);
-	tmp_str.clear();
 	
-	std::cout << BOLDWHITE << "DARKEST SECRET: " << RESET;
-	std::getline(std::cin, tmp_str);
-	while (tmp_str.empty())
+	for (int iter = 0; iter < 2; iter++)
 	{
-		std::getline(std::cin, tmp_str);
-		std::cout << "The field cannot be empty" << std::endl;
+		std::cout << BOLDWHITE << "DARKEST SECRET: " << RESET;
+		tmp_str.clear();
+		// std::getline(std::cin, tmp_str);
+		std::cin >> tmp_str;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (tmp_str.empty())
+		{
+			std::cout << "The field cannot be empty" << std::endl;
+			iter = 0;
+		}
+		else
+		{
+			contacts[i].SetDarkestSecret(tmp_str);
+			break;
+		}
 	}
-	contacts[i].SetDarkestSecret(tmp_str);
-	tmp_str.clear();
 
-	std::cout << GREEN << "Contact is successfully added" << RESET << std::endl;
+	std::cout << GREEN << "Contact #" << WHITE << i << GREEN << " <" << WHITE << contacts[i].GetFirstName() << GREEN <<  "> is successfully added" << RESET << std::endl;
 	std::cout << std::endl;
+	if (i == 8)
+		std::cout << CYAN << "PhoneBook is full. Adding new contact will reset all saved contacts\n\t\t\t>>>*<<<\n" << RESET << std::endl;
 	return;
 }
 
@@ -91,23 +134,20 @@ void	PhoneBook::searchContact(void)
 	int	index;
 	int	i = 0;
 
-	std::cout << std::endl;
-	if (contacts[0].GetInd() == 0)
-		return;
-	std::cout << "Type the index of the contact that you want to be shown: ";
+	std::cout << "\nType the index of the contact that you want to be shown: ";
 	std::cin >> index;
 	if (!std::cin.good())
 	{
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << RED << "There is no contact by this index" << RESET << std::endl;
+		std::cout << RED << "\nThere is no contact by this index\n" << RESET << std::endl;
 		return;
 	}
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (i < 8 && contacts[i].GetInd() != index)
 		i++;
 	if (i > 7 || index < 1)
-		std::cout << RED << "Index not found" << RESET << std::endl;
+		std::cout << RED << "\nIndex not found\n" << RESET << std::endl;
 	else
 	{
 		std::cout << std::endl
@@ -124,12 +164,12 @@ void	PhoneBook::printAllContacts(void)
 {
 	int	i = 0;
 	if (contacts_count == 0)
-		std::cout << RED << "There is no contacts yet in this PhoneBook" << RESET << std::endl;
+		std::cout << RED << "\nThere is no contacts yet in this PhoneBook\n" << RESET << std::endl;
 	else
 	{
 		std::cout << std::endl;
 		std::cout << std::string(45, '-') << std::endl;
-		std::cout << BOLDWHITE << "|     index|first name| last name|  nickname|" << RESET << std::endl;
+		std::cout << BOLDWHITE << "|   index  |first name|last  name| nickname |" << RESET << std::endl;
 		std::cout << std::string(45, '-') << std::endl;
 		while (i < contacts_count)
 		{
@@ -137,6 +177,7 @@ void	PhoneBook::printAllContacts(void)
 			i++;
 		}
 	}
+
 }
 
 void	PhoneBook::printCurrentContact(Contact current)
@@ -145,7 +186,7 @@ void	PhoneBook::printCurrentContact(Contact current)
 	if (current.GetFirstName().length() < 10)
 		std::cout << std::right << std::setw(10) << current.GetFirstName() << "|";
 	else
-		std::cout << std::right << std::setw(9) << current.GetLastName().substr(0, 9) << "." << "|";
+		std::cout << std::right << std::setw(9) << current.GetFirstName().substr(0, 9) << "." << "|";
 	if (current.GetLastName().length() < 10)
 		std::cout << std::right << std::setw(10) << current.GetLastName() << "|";
 	else
