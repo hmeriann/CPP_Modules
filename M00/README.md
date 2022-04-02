@@ -1,4 +1,6 @@
-C++ - Module 00:
+C++ - Module 00
+
+Topics:
 
 Namespaces, classes, member functions, stdio streams,
 initialization lists, static, const, and some other basic
