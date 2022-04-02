@@ -9,6 +9,7 @@ class Zombie
 private:
 	std::string	_name;
 public:
+	Zombie();
 	Zombie(std::string name);
 	~Zombie();
 
@@ -19,6 +20,14 @@ public:
 };
 
 Zombie*	zombieHorde( int N, std::string name );
+
+
+
+
+
+
+
+
 
 #define RESET	"\033[0m"
 #define BLACK	"\033[30m"		/* Black */
