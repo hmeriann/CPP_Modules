@@ -8,13 +8,24 @@ class Weapon
 private:
 	std::string	_type;
 public:
-	Weapon();
-	Weapon(std::string type);
+	// Weapon();
+	Weapon(std::string weaponType);
 	~Weapon();
 
-	std::string	getType(void);
-	void		setType(std::string type);
+	const std::string	&getType(void);
+	void				setType(std::string weaponType);
 };
 
 
+
+#define RESET	"\033[0m"
+#define BLACK	"\033[30m"		/* Black */
+#define RED		"\033[31m"		/* Red */
+#define GREEN	"\033[32m"		/* Green */
+#define YELLOW	"\033[33m"		/* Yellow */
+#define BLUE	"\033[34m"		/* Blue */
+#define MAGENTA	"\033[35m"		/* Magenta */
+#define CYAN	"\033[36m"		/* Cyan */
+#define WHITE	"\033[37m"		/* White */
+#define BOLDWHITE	"\033[1m\033[37m"	/* Bold White */
 #endif
