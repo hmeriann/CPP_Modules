@@ -6,7 +6,7 @@
 class	HumanB
 {
 private:
-	Weapon		*_weaponType;
+	Weapon		*_weaponType; // because it may not be set to HumanB
 	std::string	_name;
 public:
 	HumanB(std::string name);
