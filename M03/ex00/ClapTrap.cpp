@@ -51,6 +51,7 @@ ClapTrap::~ClapTrap()
 
 int	ClapTrap::getAttackDamage() const
 {
+	std::cout << "Getter is called for Attack Damage value of [ " << this->_name << " ]\n" << std::endl;
 	return this->_attackDamage;
 }
 
@@ -76,7 +77,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->_hitPoints > 0)
 	{
 		this->_hitPoints -= amount;
-		this->_attackDamage += amount;
 
 		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " took [ "
 				<< BLUE << this->_attackDamage << RESET << " ] amount of attack damage!" << std::endl;
