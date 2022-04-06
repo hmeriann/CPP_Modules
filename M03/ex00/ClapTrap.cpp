@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(/* args */)
+ClapTrap::ClapTrap()
 {
 	this->_name = "[ default ]";
 	this->_hitPoints = 0;
@@ -52,43 +52,51 @@ ClapTrap::~ClapTrap()
 void ClapTrap::attack(const std::string& target)
 {
 	this->_attackDamage += 3;
-	this->_energyPoints--;
 
-	std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " attacks "
+	if (this->_energyPoints > 0)
+	{
+		this->_energyPoints--;
+		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " attacks "
 			<< YELLOW << target << RESET << ", causing " << MAGENTA << "[ " << this->_attackDamage
 			<< " ] " << RESET << "points of damage! " << std::endl;
-	std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " Energy Points are now : " << GREEN
-			<< this->_energyPoints << RESET << "\n" << std::endl;
-
-	if (this->_energyPoints == 0)
+		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " Energy Points are now : [ " << GREEN
+			<< this->_energyPoints << RESET << " ]\n" << std::endl;
+	}
+	else
 		std::cout << RED << "You can’t do anything - no energy points left" << RESET << std::endl;
 	return;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	this->_hitPoints -= amount;
+	if (this->_hitPoints > 0)
+	{
+		this->_hitPoints -= amount;
+		this->_attackDamage += amount;
 
-	std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " took "
-			<< BLUE << this->_attackDamage << RESET << " amount of damage!" << std::endl;
-	std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " Hit Points are now : " << MAGENTA
-			<< this->_energyPoints << RESET << "\n" << std::endl;
-
-	if (this->_hitPoints == 0)
+		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " took [ "
+				<< BLUE << this->_attackDamage << RESET << " ] amount of attack damage!" << std::endl;
+		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " Hit Points are now : [ " << MAGENTA
+				<< this->_hitPoints << RESET << " ]\n" << std::endl;
+	}
+	else
 		std::cout << RED << "You can’t do anything - no hit points left" << RESET << std::endl;
+	return;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	this->_hitPoints += amount;
-	this->_energyPoints -= 1;
+	if (this->_energyPoints > 0)
+	{
+		this->_energyPoints -= 1;
+		this->_hitPoints += amount;
 
-	std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " has being repared!" << std::endl;
-	std::cout << "ClapTrap "  << MAGENTA << this->_name << RESET << " Energy Points are now : " << GREEN
-			<< this->_energyPoints << RESET << ", Hit Points are now : " << MAGENTA
-			<< this->_energyPoints << RESET << "\n" << std::endl;
-
-	if (this->_energyPoints == 0)
+		std::cout << "ClapTrap " << MAGENTA << this->_name << RESET << " has been repared!" << std::endl;
+		std::cout << "ClapTrap "  << MAGENTA << this->_name << RESET << " Energy Points are now : [ " << GREEN
+				<< this->_energyPoints << RESET << " ], Hit Points are now : [ " << MAGENTA
+				<< this->_hitPoints << RESET << " ]\n" << std::endl;
+	}
+	else
 		std::cout << RED << "You can’t do anything - no energy points left" << RESET << std::endl;
 	return;
 }

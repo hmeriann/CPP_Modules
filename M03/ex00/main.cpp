@@ -2,11 +2,12 @@
 
 int main()
 {
-	ClapTrap	user("SubZero");
+	ClapTrap	user1("SubZero");
+	ClapTrap	user2("Sonya");
 	ClapTrap	looser;
 
-	user.attack("Sonya");
-	user.takeDamage(2);
-	user.beRepaired(1);
+	user1.attack("Sonya");
+	user2.takeDamage(3);
+	user2.beRepaired(1);
 	return 0;
 }
