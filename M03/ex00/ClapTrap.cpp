@@ -3,8 +3,8 @@
 ClapTrap::ClapTrap()
 {
 	this->_name = "[ default ]";
-	this->_hitPoints = 0;
-	this->_energyPoints = 0;
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
 	this->_attackDamage = 0;
 	std::cout << "Default constructor is called for name " << YELLOW << this->_name
 		<< RESET << " with \n\tHit Points :\t[ " << this->_hitPoints <<
@@ -31,6 +31,8 @@ ClapTrap::ClapTrap(const ClapTrap &copy) :
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 {
+	if (&rhs == this)
+		return *this;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
 	this->_energyPoints = rhs._energyPoints;
@@ -47,12 +49,14 @@ ClapTrap::~ClapTrap()
 	std::cout << RED << "Destructor is called for [ " << this->_name << " ]\n" << RESET << std::endl;
 }
 
+int	ClapTrap::getAttackDamage() const
+{
+	return this->_attackDamage;
+}
 
 
 void ClapTrap::attack(const std::string& target)
 {
-	this->_attackDamage += 3;
-
 	if (this->_energyPoints > 0)
 	{
 		this->_energyPoints--;
