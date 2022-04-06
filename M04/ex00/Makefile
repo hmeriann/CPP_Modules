@@ -1,6 +1,6 @@
-NAME	=	DiamondTrap
-SRC		=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
-HEAD	=	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+NAME	=	animal
+SRC		=	main.cpp Animal.cpp Cat.cpp Dog.cpp
+HEAD	=	Animal.hpp Cat.hpp Dog.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++

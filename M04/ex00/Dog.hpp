@@ -5,14 +5,14 @@
 #include "Animal.hpp"
 
 class Dog : public Animal {
-private:
-	/* data */
-protected:
-	std::string	type;
-
 public:
-	Dog(/* args */);
-	~Dog();
+	Dog();
+	Dog(const Dog &Dog);
+	Dog	&operator=(const Dog &rhs);
+	virtual	~Dog();
+
+	// std::string	getType();
+	virtual void		makeSound() const;
 };
 
 
