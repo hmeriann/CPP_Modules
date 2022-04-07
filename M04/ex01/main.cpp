@@ -1,34 +1,36 @@
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	
+	
+	
+	
+	Dog* dog = new Dog();
+	Cat* cat = new Cat();
+	std::cout << cat->getType() << " " << std::endl;
+	std::cout << dog->getType() << " " << std::endl;
+	dog->makeSound(); //will output the cat sound!
+	cat->makeSound();
 
-	delete i;
-	delete j;
-	delete meta;
+	cat->setCatsIdea("😻 : 🐟🐟🐟 Meaowww 🐠🐠🐠", 3);
+	cat->setCatsIdea("😾 : 💣💣💣 Meaowww!!! 💣💣💣", 103); // error message
 
-	std::cout << "\nTEST WITH WRONG CAT\n" << std::endl;
+	dog->setDogsIdea("🐶 : 🍖🍖🍖🍖 Bark-bark! 🍖🍖🍖🍖", 0);
+	dog->setDogsIdea("🥺 : 🦴🦴🦴🦴 RRRRRRRR!!! 🦴🦴🦴🦴", 100); // error message
 
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wi = new WrongCat();
-	std::cout << wi->getType() << " " << std::endl;
-	wi->makeSound();
-	wmeta->makeSound();
+	dog->getDogsIdea(6); // Idea #6
+	dog->getDogsIdea(0); //"🐶 : 🍖🍖🍖🍖 Bark-bark! 🍖🍖🍖🍖"
+	dog->getDogsIdea(100); // error message
 
-	delete wi;
-	delete wmeta;
+	cat->getCatsIdea(103); //error message
+	cat->getCatsIdea(10); //Idea #10
+	cat->getCatsIdea(3); //"😻 : 🐟🐟🐟 Meaowww 🐠🐠🐠"
+
+	delete dog;
+	delete cat;
 
 	return 0;
 }

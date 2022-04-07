@@ -3,16 +3,20 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
+private:
+	Brain	*dogsBrain;
 public:
 	Dog();
-	Dog(const Dog &Dog);
+	Dog(const Dog &dog);
 	Dog	&operator=(const Dog &rhs);
 	virtual	~Dog();
 
-	// std::string	getType();
-	virtual void		makeSound() const;
+	virtual void	makeSound() const;
+	std::string		getDogsIdea(int i);
+	void			setDogsIdea(std::string catsIdea, int i);
 };
 
 
