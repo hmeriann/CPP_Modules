@@ -2,11 +2,23 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+#define COUNT 5
+
 int main()
 {
+	Animal* animals[COUNT];
+	for (int i = 0; i < COUNT; i++)
+	{
+		if (i < COUNT / 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+
+	for (int i = 0; i < COUNT; i++)
+		delete animals[i];
 	
-	
-	
+	std::cout << "\n\n**>\t**>\t**>\t**>\t**>\t**>\t**>\t**>" << std::endl;
 	
 	Dog* dog = new Dog();
 	Cat* cat = new Cat();
