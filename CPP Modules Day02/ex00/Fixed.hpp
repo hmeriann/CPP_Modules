@@ -16,13 +16,13 @@ class Fixed
 {
 private:
 	int					fixedPointNumber;
-	static constant int	bits = 8;
+	static const int	bits = 8;
 public:
 	Fixed();
 //Copy constructor
-	Fixed(/* args */);
- //Copy assignment operator overload
-
+	Fixed(const Fixed &rhs);
+//Copy assignment operator overload
+	Fixed	&operator=(const Fixed &rhs);
 	~Fixed();
 //returns the raw value of the fixed-point value
 	int		getRawBits( void ) const;
