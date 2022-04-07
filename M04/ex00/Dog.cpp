@@ -12,7 +12,7 @@ Dog::Dog(const Dog &dog)
 {
 	std::cout << "🐶 Copy constructor is called for Dog" << std::endl;
 	
-	*this = Dog;
+	*this = dog;
 	return;
 }
 
