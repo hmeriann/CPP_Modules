@@ -2,8 +2,11 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
 
-class Bureaucrat
+class	Form;
+
+class	Bureaucrat
 {
 private:
 	std::string	name_;
@@ -31,11 +34,13 @@ public:
 			virtual const char *what() const throw();
 	};
 
-	std::string		getName();
-	int	getGrade(); //Remember. Since grade 1 is the highest one and 150 the lowest, incrementing a grade 3 should give a grade 2 to the bureaucrat
+	std::string	getName();
+	int			getGrade(); //Remember. Since grade 1 is the highest one and 150 the lowest, incrementing a grade 3 should give a grade 2 to the bureaucrat
 
-	void	incrementGrade(); // If the grade is out of range, both of them will throw the same exceptions as the constructor.
-	void	decrementGrade();
+	void		incrementGrade(); // If the grade is out of range, both of them will throw the same exceptions as the constructor.
+	void		decrementGrade();
+
+	void		signForm(Form &form);
 
 };
 

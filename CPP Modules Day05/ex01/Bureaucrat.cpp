@@ -38,9 +38,9 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "\n(x_x) Default Bureaucrat destructor is called for " << this->name_ << std::endl;
 }
 
-const char * Bureaucrat::MyException::what() const throw()
+const char *Bureaucrat::MyException::what() const throw()
 {
-	return ("🥊MyException\n");
+	return ("MyException\n");
 }
 
 const char *Bureaucrat::ExceptionTooHighgGrade::what() const throw()
@@ -65,7 +65,7 @@ int	Bureaucrat::getGrade()
 
 void	Bureaucrat::incrementGrade()
 {
-	if (this->grade_ - 1 < 1)
+	if (this->grade_ - 1 < 0)
 		throw Bureaucrat::ExceptionTooHighgGrade();
 	else
 	{
@@ -84,6 +84,21 @@ void	Bureaucrat::decrementGrade()
 		this->grade_++;
 		std::cout << MAGENTA << "\n(>_<) Bureaucrat " << this->name_ << " was downgraded to grade "
 			<< this->grade_ << RESET << std::endl;
+	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	if (this->getGrade() <= form.getGradeToSign()) // signers grade should be upper (means less) than required by the form
+	{
+		form.beSigned(*this);
+		std::cout << CYAN << this->name_ << "signed" << form.getName() << RESET << std::endl;
+	}
+	else
+	{
+
+		std::cout << CYAN << Bureaucrat::name_ << "couldn't sign " << form.getName()
+					<< " because of grade " << this->grade_ << " is too low" << RESET << std::endl;
 	}
 }
 
