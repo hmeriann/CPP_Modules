@@ -4,7 +4,7 @@ HEAD	=	Bureaucrat.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
 
 all:		${NAME}
