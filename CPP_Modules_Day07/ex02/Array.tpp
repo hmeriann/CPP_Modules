@@ -25,7 +25,6 @@ public:
 
 	Array	&operator=(const Array &rhs);
 	T &operator[](unsigned int i);
-	// void	print(void)	const;
 };
 
 
@@ -57,8 +56,3 @@ T	&Array<T>::operator[](unsigned int i)
 	return data[i];
 }
 
-// template<typename T>
-// void	Array<T>::print(void)	const
-// {
-
-// }
