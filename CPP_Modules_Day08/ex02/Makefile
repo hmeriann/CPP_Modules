@@ -1,6 +1,6 @@
 NAME	=	mutant
-SRC		=	main.cpp Mutant.cpp
-HEAD	=	Mutant.hpp Mutant.tpp
+SRC		=	main.cpp
+HEAD	=	MutantStack.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++
