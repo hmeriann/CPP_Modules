@@ -1,23 +1,37 @@
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array() : data(nullptr), n_(0) {};
-
-
-template<typename T>
-Array<T>::Array(unsigned int n) : data(new T[n]), n_(n) {}
-
-
-template<typename T>
-Array<T>::Array(const Array &arr) : data(new T[arr.n_]), n_(arr.n_)
+class Array
 {
-	for (unsigned int i = 0; i < arr.n_; ++i)
-		data[i] = arr.data[i];
-}
+
+private:
+
+	T	*data; 			// elements content
+	unsigned int	n_; // elements count
+
+public:
+
+	Array() : data(nullptr), n_(0) {}
+	~Array() { delete [] this->data; }
+
+	Array(unsigned int n) : data(new T[n]), n_(n) {}
+	Array(const Array<T> &arr) : data(new T[arr.n_]), n_(arr.n_)
+	{
+		for (unsigned int i = 0; i < arr.n_; ++i)
+			data[i] = arr.data[i];
+	}
+
+	unsigned int	Array<T>::size() const { return this->n_; }
+
+	Array	&operator=(const Array &rhs);
+	T &operator[](unsigned int i);
+	// void	print(void)	const;
+};
+
 
 
 template<typename T>
-Array<T> &Array<T>::operator=(const Array &rhs)
+Array<T> &Array<T>::operator=(const Array<T> &rhs)
 {
 	if (this->data)
 		delete [] this->data;
@@ -33,14 +47,6 @@ Array<T> &Array<T>::operator=(const Array &rhs)
 
 	return *this;
 }
-
-
-template<typename T>
-Array<T>::~Array() { delete [] this->data; };
-
-
-template<typename T>
-unsigned int	Array<T>::size() const { return this->n_; }
 
 
 template<typename T>
