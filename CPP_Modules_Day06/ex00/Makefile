@@ -1,6 +1,6 @@
-NAME	=	bureaucrat
-SRC		=	main.cpp Bureaucrat.cpp
-HEAD	=	Bureaucrat.hpp
+NAME	=	typecast
+SRC		=	main.cpp TypeCast.cpp
+HEAD	=	TypeCast.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++

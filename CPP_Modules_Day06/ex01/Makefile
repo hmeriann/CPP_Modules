@@ -1,6 +1,6 @@
-NAME	=	form
-SRC		=	main.cpp Bureaucrat.cpp Form.cpp
-HEAD	=	Bureaucrat.hpp Form.hpp
+NAME	=	serialize
+SRC		=	main.cpp Reint.cpp
+HEAD	=	Reint.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++
