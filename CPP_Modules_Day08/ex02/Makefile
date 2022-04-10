@@ -1,6 +1,6 @@
-NAME	=	array
-SRC		=	main.cpp
-HEAD	=	Array.hpp Array.tpp
+NAME	=	mutant
+SRC		=	main.cpp Mutant.cpp
+HEAD	=	Mutant.hpp Mutant.tpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++

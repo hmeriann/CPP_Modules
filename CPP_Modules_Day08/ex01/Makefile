@@ -1,6 +1,6 @@
-NAME	=	iter
-SRC		=	main.cpp
-HEAD	=	Iter.hpp
+NAME	=	span
+SRC		=	main.cpp Span.cpp
+HEAD	=	Span.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++
@@ -21,3 +21,4 @@ fclean:		clean
 re:			fclean ${NAME}
 
 .PHONY:		all clean fclean re test
+

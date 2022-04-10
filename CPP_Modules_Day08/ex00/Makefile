@@ -1,6 +1,6 @@
-NAME	=	start
+NAME	=	easyfind
 SRC		=	main.cpp
-HEAD	=	Start.hpp
+HEAD	=	easyfind.hpp
 
 OBJ		=	${SRC:.cpp=.o}
 CC		=	c++
@@ -21,3 +21,4 @@ fclean:		clean
 re:			fclean ${NAME}
 
 .PHONY:		all clean fclean re test
+

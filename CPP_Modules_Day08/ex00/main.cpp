@@ -1,4 +1,4 @@
-#include "Start.hpp"
+#include "easyfind.hpp"
 
 int	foo(int x)
 {
@@ -8,35 +8,34 @@ int	foo(int x)
 
 int	main()
 {
-	int	a = 21;
-	int	b = 42;
+	std::vector<int>	v1;
+	std::vector<int>	v2(10);
 
+	for (int i = 0; i < 10; i++)
+		v2[i] = i;
 
-	std::cout << "Swap A " << a << " and B " << b;
-	::swap( a, b );
-	std::cout <<  ". Result : A " << a << " and B " << b << std::endl;
+	std::cout << "Case 1 : the value is there" << '\n';
+	try
+	{
+		std::vector< int >::iterator	it = easyfind(v2, 5);
+		std::cout << "\tFound value is : " << *it << '\n';
 
-	std::cout << "Min of " << a << " and " << b << " is "
-			<< ::min<int>( a, b ) << std::endl;
-	std::cout << "Min of " << a << " and " << b << " is "
-			<< ::min( a, b ) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "No such of value in v2" << '\n';
+	}
 
-	std::cout << "Max of " << a << " and " << b << " is "
-			<< ::max<int>( a, b ) << std::endl;
-	std::cout << "Max of " << a << " and " << b << " is "
-			<< ::max( a, b ) << std::endl;
-
-	int	ret = ::max<int>( foo(a), foo(b) );
-	std::cout << "Max of " << a << " and " << b << " is "
-			<< ::max<int>( a, b ) << std::endl;
-
-	std::cout << "Min of " << a << " and " << b << " is "
-			<< ::min<int>( a, b ) << std::endl;
-
-	std::cout << "Swap A " << a << " and B " << b;
-	::swap( a, b );
-	std::cout <<  ". Result : A " << a << " and B " << b << std::endl;
-
+	std::cout << "Case 2 : empty vector" << '\n';
+	try
+	{
+		easyfind(v1, 10);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "\tNo such of value in v1" << '\n';
+	}
 
 	return 0;
 }
+

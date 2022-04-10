@@ -16,7 +16,7 @@ int main()
 	lst1.push_back(17);
 	lst1.push_back(42);
 
-	// `// map1["opB"] = new OperationB;
+	// map1["opB"] = new OperationB;
 
 	std::list<int>::const_iterator		it;
 	std::list<int>::const_iterator		ite = lst1.end();
